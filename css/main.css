@@ -90,6 +90,9 @@ video {display: block}
   display: block;
   font-size: 0.9rem;
 }
+.header .gnb .global .sheet li:hover {
+  text-decoration: underline;
+}
 
 
 #ham_chk {display: none;}
@@ -320,6 +323,12 @@ video {display: block}
 .header .gnb .ham .sheet .menu_box .sheet_lnb .lv3_sheet span {
   color: #999;
   margin-right: 8px;
+}
+
+
+/*-------- header web_gnb --------*/
+.web_gnb {
+  display: none;
 }
 
 
@@ -725,6 +734,16 @@ video {display: block}
   border-radius: 20px;
   line-height: 23px;
   float: right;
+}
+.inform .plus:hover {
+  background-color: #222;
+  border-color: #222;
+  color: white;
+  transition: all 0.3s;
+}
+.inform .plus:hover a {
+  color: white;
+  transition: all 0.3s;
 }
 .inform .plus a {
   display: block;
@@ -1155,6 +1174,12 @@ video {display: block}
 }
 
 
+/*-------- page_scroll_bar --------*/
+.page_scroll_bar {
+  display: none;
+}
+
+
 /*-------- top_btn --------*/
 .top_btn_box {
   opacity: 0;
@@ -1575,6 +1600,7 @@ video {display: block}
   .header {
     width: 1280px; height: 100px;
     margin: 0 auto;
+    overflow: visible;
   }
   .header:hover {
     cursor: pointer;
@@ -1588,6 +1614,82 @@ video {display: block}
 
   .header .gnb {
     display: none;
+  }
+
+
+  /*-------- header gnb --------*/
+  .web_gnb {
+    display: block;
+    position: relative;
+  }
+  .web_gnb > ul {
+    font-size: 0;
+    position: absolute;
+    top: 5px; right: 0;
+  }
+  .web_gnb > ul > li {
+    display: inline-block;
+    font-size: 0.9rem;
+    color: white;
+    text-align: center;
+    margin-right: 20px;
+  }
+  .web_gnb > ul > li:nth-child(1):hover,
+  .web_gnb > ul > li:nth-child(2):hover {
+    text-decoration: underline;
+  }
+
+  .web_gnb .global {
+    position: relative;
+  }
+  .web_gnb .global label p,
+  .web_gnb .global label i {
+    display: inline-block;
+    font-size: 0.9rem;
+    color: white;
+  }
+  .web_gnb .global label p {margin-right: 5px;}
+  .web_gnb .global .sheet {
+    display: none;
+  }
+  .web_gnb .global label i {
+    transition: all ease 0.4s;
+  }
+  .web_gnb .global label:hover {
+    cursor: pointer;
+  }
+  .web_gnb .global label:hover p {
+    text-decoration: underline;
+  }  
+
+  #web_global_chk {display: none;}
+  .web_gnb .global .sheet {display: none;}
+
+  #web_global_chk:checked ~ .sheet {display: block;}
+  #web_global_chk:checked ~ .label p {text-decoration: underline;}
+  #web_global_chk:checked ~ .label i {transform: rotate(180deg);}
+
+  .web_gnb .global .sheet {
+    width: 90px; height: 150px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px #aaa;
+    text-align: left;
+    padding: 10px 9px;
+    box-sizing: border-box;
+    position: absolute;
+    top: 30px; right: 0;
+    z-index: 20;
+  }
+  .web_gnb .global .sheet li {
+    margin-bottom: 6px;
+  }
+  .web_gnb .global .sheet li a {
+    display: block;
+    font-size: 0.9rem;
+  }
+  .web_gnb .global .sheet li:hover {
+    text-decoration: underline;
   }
 
 
@@ -1626,6 +1728,7 @@ video {display: block}
     border-bottom: 1px solid #ddd;
     position: absolute;
     top: 100px; left: 0;
+    z-index: 10;
   }
   .web_lnb .lnb_sheet {
     display: flex;
@@ -1829,6 +1932,7 @@ video {display: block}
     margin-bottom: 50px;
   }
   .performance_top .top_right .genre p {
+    display: none;
     font-size: 0.9rem;
   }
   .performance_top .top_right .title > ul {
@@ -1869,7 +1973,7 @@ video {display: block}
   .performance_bottom {
     display: flex;
     width: 100%; height: 165px;
-    background-color: #eee;
+    background-color: #ccc;
   }
   .performance_bottom .bottom_left {
     width: 40%; height: 165px;
@@ -1979,5 +2083,51 @@ video {display: block}
   .footer_m {
     width: 1280px;
     margin: 0 auto;
+  }
+
+
+  /*-------- page_scroll_bar --------*/
+  .page_scroll_bar {
+    display: block;
+    position: fixed;
+    top: 50%; left: 70px;
+    margin-top: -80px;
+    z-index: 1;
+  }
+  .page_scroll_bar > ul {
+    display: inline-block;
+    width: 1px; height: 130px;
+    background-color: #ccc;
+  }
+  .page_scroll_bar > ul > li {
+    width: 5px; height: 5px;
+    background-color: #FFF;
+    border: 1px solid #ccc; box-sizing: border-box;
+    border-radius: 5px;
+    margin-left: -2.5px;
+    margin-bottom: 20px;
+  }
+  .page_scroll_bar > ul > li:last-child {
+    margin-bottom: 0;
+  }
+
+  .page_scroll_bar .pointer {
+    display: block;
+    width: 9px; height: 9px;
+    background-color: #FFF;
+    border: 2px solid #07b39b; box-sizing: border-box;
+    border-radius: 15px;
+    position: absolute;
+    top: 0; left: -4px;
+    animation-name: pageborder;
+    animation-duration: 0.8s;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes pageborder {
+    0% {scale: 1;}
+    30% {scale: 1.2;}
+    60% {scale: 1.4;}
+    100% {scale: 1.6;}
   }
 }

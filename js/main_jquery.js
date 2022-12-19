@@ -5,6 +5,9 @@ $(function() {
   const logoB = $('.header_box .header .logo_b');
   const globalP = $('.header_box .header .gnb .global label p');
   const globalI = $('.header_box .header .gnb .global label i');
+  const webGlobal = $('.header_box .header .web_gnb li');
+  const webGlobalP = $('.header_box .header .web_gnb .global label p');
+  const webGlobalI = $('.header_box .header .web_gnb .global label i');
   const hamI = $('.header_box .header .gnb .ham label i');
   const hamBtn = $('#ham_chk');
   const hamDimmed = $('.header .gnb .ham .dimmed');
@@ -18,6 +21,9 @@ $(function() {
       logoB.css('display', 'block');
       globalP.css('color', '#585858');
       globalI.css('color', '#585858');
+      webGlobal.css('color', '#585858');
+      webGlobalP.css('color', '#585858');
+      webGlobalI.css('color', '#585858');
       hamI.css('color', '#585858');
       lnbTab.css('color', '#585858');
     } else {
@@ -26,10 +32,33 @@ $(function() {
       logoB.css('display', 'none');
       globalP.css('color', '#FFF');
       globalI.css('color', '#FFF');
+      webGlobal.css('color', '#FFF');
+      webGlobalP.css('color', '#FFF');
+      webGlobalI.css('color', '#FFF');
       hamI.css('color', '#FFF');
       lnbTab.css('color', '#FFF');
     }
   })
+
+
+  // window scroll_event(page_scroll_bar)
+  $(window).scroll(function() {
+    if($(this).scrollTop() == $('.visual_main').offset().top) {
+      $('.pointer').css('top', '0');
+    } else if($(this).scrollTop() <= $('.guide').offset().top) {
+      $('.pointer').css('top', '20px');
+    } else if($(this).scrollTop() <= $('.inform').offset().top) {
+      $('.pointer').css('top', '48px');
+    } else if($(this).scrollTop() <= $('.communication').offset().top) {
+      $('.pointer').css('top', '73px');
+    } else if($(this).scrollTop() <= $('.web_performance').offset().top) {
+      $('.pointer').css('top', '98px');
+    } else if($(this).scrollTop() <= $('.web_exhibition').offset().top) {
+      $('.pointer').css('top', '98px');
+    } else if($(this).scrollTop() <= $('.banner').offset().top) {
+      $('.pointer').css('top', '125px');
+    }
+  }) 
 
 
   // lnb_tab mouseover_event
@@ -39,19 +68,18 @@ $(function() {
     logoB.css('display', 'block');
     globalP.css('color', '#585858');
     globalI.css('color', '#585858');
+    webGlobal.css('color', '#585858');
+    webGlobalP.css('color', '#585858');
+    webGlobalI.css('color', '#585858');
     hamI.css('color', '#585858');
     lnbTab.css('color', '#585858');
     lnbTab.eq($(this).index()).css('color', '#E21355');
     lnbSheet.stop().slideDown(400);
   })
-  lnbSheet.mouseover(function() {
-    header.addClass('header_on');
-    logoW.css('display', 'none');
-    logoB.css('display', 'block');
-    globalP.css('color', '#585858');
-    globalI.css('color', '#585858');
-    hamI.css('color', '#585858');
+  lnbTab.mouseout(function() {
     lnbTab.css('color', '#585858');
+  })
+  lnbSheet.mouseover(function() {
     lnbSheet.stop().slideDown(400);
   })
   lnbSheet.mouseout(function() {
@@ -202,13 +230,18 @@ $(function() {
 
 
   // small_poster click_event(txt)
+  const performanceGenreAll = $('.web_performance .genre p');
   const performanceTitleAll = $('.web_performance .title ul');
 
   for(let i=1; i<=9; i++) {
     let performancePoster = $('.pfpo' + i);
+    let performanceGenre = $('.pfgr' + i);
     let performanceTitle = $('.pfti' + i);
     
     performancePoster.click(function() {
+      performanceGenreAll.css('display', 'none');
+      performanceGenre.css('display', 'block');
+
       performanceTitleAll.css('display', 'none');
       performanceTitle.css('display', 'block');
     })
