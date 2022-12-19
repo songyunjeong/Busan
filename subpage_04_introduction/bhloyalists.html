@@ -11,7 +11,8 @@
   <link rel="stylesheet" href="./css/bhloyalists.css">
 
   <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-  <script src="./js/bhloyalists.js"></script>
+  <script src="./js/bhloyalists.js" defer></script>
+  <script src="./js/bhloyalists_jquery.js"></script>
 
   <!-- accordion -->
   <link rel="stylesheet" href="./js/plugin/jquery-ui.css">
@@ -533,6 +534,30 @@
         </div><!--ham-->
       </nav><!--gnb-->
 
+      <nav class="web_gnb">
+        <ul>
+          <li>로그인</li>
+          <li>회원가입</li>
+          <li>
+            <div class="global">
+              <input type="checkbox" id="web_global_chk">
+              <label for="web_global_chk" class="label">
+                <p>Kor</p>
+                <i class="fa-solid fa-chevron-down"></i>
+              </label>
+              <div class="sheet">
+                <ul>
+                  <li><a href="#!">English</a></li>
+                  <li><a href="#!">日本語</a></li>
+                  <li><a href="#!">简体中文</a></li>
+                  <li><a href="#!">繁體中文</a></li>
+                  <li><a href="#!">WorldWide</a></li>
+                </ul>
+              </div>
+          </li>
+        </ul>
+      </nav><!--web_gnb-->
+      
       <nav class="web_lnb">
         <ul class="lnb_tab">
           <li>부산민원120</li>
@@ -978,7 +1003,7 @@
     
       <div class="comment_box">
         <input type="text" class="comment" placeholder="댓글을 입력해 주세요.">
-        <button class="comment_btn">등록</button>
+        <button type="button" class="comment_btn">등록</button>
     
         <div class="count_list">
           <div class="comment_count">
@@ -994,7 +1019,7 @@
       </div><!--comment_box-->
     
       <div class="comment_user">
-        <div>
+        <div class="user2">
           <div class="img">철수</div>
           <div class="txt">
             <div class="name">김철수</div>
@@ -1007,8 +1032,8 @@
               <label for="like_btn01"></label>
             </div>
           </div>
-        </div><!--1-->
-        <div>
+        </div><!--2-->
+        <div class="user1">
           <div class="img"><img src="./images_loyalists/profile01.png" alt=""></div>
           <div class="txt">
             <div class="name">이진영</div>
@@ -1021,7 +1046,7 @@
               <label for="like_btn02"></label>
             </div>
           </div>
-        </div><!--2-->
+        </div><!--1-->
       </div><!--comment_user-->
     </div><!--contents-->
   </div><!--wrap-->

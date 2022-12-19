@@ -1,115 +1,38 @@
-$(function() {
-  // lnb_tab mouseover_event
-  const header = $('.header_box');
-  const logoW = $('.header_box .header .logo_w');
-  const logoB = $('.header_box .header .logo_b');
-  const globalP = $('.header_box .header .gnb .global label p');
-  const globalI = $('.header_box .header .gnb .global label i');
-  const hamI = $('.header_box .header .gnb .ham label i');
-  const hamBtn = $('#ham_chk');
-  const hamDimmed = $('.header .gnb .ham .dimmed');
-  const lnbTab = $('.header .web_lnb .lnb_tab li');
-  const lnbSheet = $('.header .web_lnb .sheet_box');
+document.querySelector('.comment_btn').addEventListener('click', () => {
+  let newComment = document.querySelector('.comment')
+  let userComment = document.createTextNode(newComment.value)
 
-  lnbTab.mouseover(function() {
-    header.addClass('header_on');
-    logoW.css('display', 'none');
-    logoB.css('display', 'block');
-    globalP.css('color', '#585858');
-    globalI.css('color', '#585858');
-    hamI.css('color', '#585858');
-    lnbTab.css('color', '#585858');
-    lnbTab.eq($(this).index()).css('color', '#E21355');
-    lnbSheet.stop().slideDown(400);
-  })
-  lnbSheet.mouseover(function() {
-    header.addClass('header_on');
-    logoW.css('display', 'none');
-    logoB.css('display', 'block');
-    globalP.css('color', '#585858');
-    globalI.css('color', '#585858');
-    hamI.css('color', '#585858');
-    lnbTab.css('color', '#585858');
-    lnbSheet.stop().slideDown(400);
-  })
-  lnbSheet.mouseout(function() {
-    lnbSheet.stop().slideUp(400);
-  })
+  if(userComment.length > 0) {
+    let commentLi = document.querySelector('.comment_user')
+    let newDivBox = document.createElement('div')
+    let newDivImg = document.createElement('div')
+    let newDivTxt = document.createElement('div')
+    let newDivTxtName = document.createElement('div')
+    let newDivTxtDate = document.createElement('div')
+    let newDivTxtCommentTxt = document.createElement('div')
+    let newDivLike = document.createElement('div')
 
+    commentLi.insertBefore(newDivBox, commentLi.childNodes[0])
+    newDivBox.appendChild(newDivImg)
+    newDivBox.appendChild(newDivTxt)
+    newDivBox.appendChild(newDivLike)
+    
+    newDivImg.setAttribute('class', 'img')
+    newDivImg.textContent = 'user'
+    newDivTxt.setAttribute('class', 'txt')
+    newDivTxt.appendChild(newDivTxtName)
+    newDivTxt.appendChild(newDivTxtDate)
+    newDivTxt.appendChild(newDivTxtCommentTxt)
+    newDivTxtName.setAttribute('class', 'name')
+    newDivTxtName.textContent = 'user'
+    newDivTxtDate.setAttribute('class', 'date')
+    newDivTxtDate.textContent = '2022.12.19 23:06'
+    newDivTxtCommentTxt.setAttribute('class', 'comment_txt')
+    newDivTxtCommentTxt.appendChild(userComment)
+    newDivLike.setAttribute('class', 'like')
 
-  // ham click_event
-  hamBtn.click(function() {
-    if(hamBtn.is(':checked')) {
-      hamI.css('color', '#585858');
-      hamDimmed.css('display', 'block');
-    } else {
-      hamI.css('color', '#FFF');
-      hamDimmed.css('display', 'none');
-    }
-  })
-
-
-  // ham_tab click_event
-  const tab = $('.menu_box .tabsheet .tab > li');
-  const sheet = $('.menu_box .tabsheet .sheet_lnb > ul');
-
-  tab.click(function() {
-    let target = $(this);
-    let i = target.index();
-
-    tab.removeClass('tab_on');
-    tab.eq(i).addClass('tab_on');
-
-    sheet.removeClass('sheet_on');
-    sheet.eq(i).addClass('sheet_on');
-  })
-
-  
-  // aside_tab click_event
-  for(let i=1; i<=9; i++) {
-    let asideTab = $('#lv3_aside' + i);
-    let asideSheet = $('.aside_sheet' + i);
-
-    asideTab.click(function() {
-      if(asideTab.is(':checked')) {
-        asideSheet.slideDown(400);
-      } else {
-        asideSheet.slideUp(400);
-      }
-    })
-  }  
-  
-
-  // footer01_chk click_event
-  const footerBtn = $('.footer .footer01 > input');
-
-  footerBtn.click(function() {
-    let target = $(this);
-    let i = target.index();
-
-    if(footerBtn.is(':checked')) {
-      $('input:checkbox[id="site01_chk"]').prop('checked', false);
-      $('input:checkbox[id="site02_chk"]').prop('checked', false);
-
-      footerBtn.eq(i).prop('checked', true);
-    }
-  })
-  
-
-  // window scroll_event (top_btn)
-  const topBtn = $('.top_btn_box');
-
-  $(window).scroll(function() {
-    if($(this).scrollTop() > 500) {
-      topBtn.css('opacity', '1');
-    } else {
-      topBtn.css('opacity', '0');
-    }
-  })
-
-
-  // top_btn click_event
-  topBtn.click(function() {
-    $('html, body').stop().animate({scrollTop: 0}, 300);
-  })
+    newComment.value = ''
+  } else {
+    alert('댓글을 입력해 주세요.')
+  }
 })

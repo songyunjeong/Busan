@@ -375,6 +375,16 @@
   }
 
 
+  /*-------- header gnb --------*/
+  .web_gnb > ul > li {
+    color: #585858;
+  }
+  .web_gnb .global label p,
+  .web_gnb .global label i {
+    color: #585858;
+  }
+
+
   /*-------- header lnb --------*/
   .web_lnb {
     display: block;
